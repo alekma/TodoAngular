@@ -1,0 +1,26 @@
+li {
+  background: lightgrey;
+  margin: 5px;
+  list-style: none;
+  display: flex;
+  p {
+    display: flex;
+    margin: auto;
+    margin-left: 0;
+    padding: 0 10px;
+  }
+  button {
+    margin: 0 2px;
+  }
+}
+ul {
+  padding: 0
+}
+.odd-li {
+  background: lavender;
+  margin: 5px;
+}
+.last-li {
+  background: pink;
+  margin: 5px;
+}
