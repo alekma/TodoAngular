@@ -6,15 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  newTask = '';
-  taskList = [];
+  taskList  = ['Sprzatanie', 'Pranie', 'Odkurzanie'];
   taskDone = [];
 
 
-  add() {
-    this.taskList.push(this.newTask);
-    this.newTask = '';
-    console.log(this.taskList);
+  add(task) {
+    this.taskList.push(task);
   }
   remove(task) {
     this.taskList = this.taskList.filter( e => e !== task)
