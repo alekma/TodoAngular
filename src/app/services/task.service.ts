@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
+import { Task } from '../models/task';
+
 @Injectable()
 export class TaskService {
 
- taskList = [];
- taskDone = [];
+  taskList = [];
+  taskDone = [];
 
-  tasksListObs = new BehaviorSubject(this.taskList);
-  tasksDoneObs = new BehaviorSubject(this.taskDone);
+  tasksListObs = new BehaviorSubject([]);
+  tasksDoneObs = new BehaviorSubject([]);
 
   constructor() {
-    this.taskList = ['Sprzatanie', 'Pranie', 'Odkurzanie'];
+    this.taskList = [
+      { name: 'Sprzatanie', created: new Date() },
+      { name: 'Pranie', created: new Date() },
+      { name: 'Odkurzanie', created: new Date() }
+    ];
     this.tasksListObs.next(this.taskList);
   }
   add(task) {
@@ -26,10 +32,10 @@ export class TaskService {
     this.remove(task);
     this.tasksDoneObs.next(this.taskDone);
   }
-  getTaskListObs(): Observable<Array<string>> {
+  getTaskListObs(): Observable<Array<Task>> {
     return this.tasksListObs.asObservable();
   }
-  getTaskDoneObs(): Observable<Array<string>> {
+  getTaskDoneObs(): Observable<Array<Task>> {
     return this.tasksDoneObs.asObservable();
   }
 }
